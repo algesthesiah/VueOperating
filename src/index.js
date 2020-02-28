@@ -1,10 +1,10 @@
-import VueLazyView from './VueLazyView'
+import VueOperating from './VueOperating'
 
-VueLazyView.install = function(Vue) {
-  Vue.component(VueLazyView.name, VueLazyView)
+VueOperating.install = function(Vue) {
+  Vue.component(VueOperating.name, VueOperating)
 }
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(VueLazyView)
+  window.Vue.use(VueOperating)
 }
 
-export default VueLazyView
+export default VueOperating

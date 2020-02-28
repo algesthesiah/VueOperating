@@ -1,17 +1,27 @@
-# vue2-lazy-view
+# vue-operating
 
-> Vue.js 2.x component level lazy loading solution
+> A vue component contains an action group, an edit delete button, and a mini confirmation box
 
 ## Usage
 
 ``` html
+
 <template>
   <div>
     <div class="container">
-      <h2>组件都会在3s后加载</h2>
-      <VueLazyView :show="show">
-        <div class="main">我是内容</div>
-      </VueLazyView>
+      <h2>hover 查看效果</h2>
+      <ul class="main">
+        <li v-for="(it, i) in tags" :key="i" class="li">
+          <div class="it">
+            <span class="text">{{ it.name }}</span>
+          </div>
+          <VueOperating
+            :name="it.name"
+            @edit="edit(it.name)"
+            @submit="submit(it.name)"
+          ></VueOperating>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -20,47 +30,44 @@ export default {
   data() {
     return {
       show: false,
+      tags: [
+        { name: 'webpack' },
+        { name: 'vue' },
+        { name: 'react' },
+        { name: 'nodejs' },
+        { name: 'javascript' },
+      ],
     }
   },
-  mounted() {
-    setTimeout(() => {
-      this.show = true
-    }, 3000)
+  methods: {
+    edit(e) {
+      alert(e)
+    },
+    submit(e) {
+      alert(e)
+    },
   },
 }
 </script>
-<style lang="scss" scoped>
-.container {
-  width: 400px;
-  height: 400px;
-  margin: 0 auto;
-  .main {
-    width: 100px;
-    height: 100px;
-  }
-}
-</style>
-
-
 ```
 
 ### DEMO
-- [在线网址](https://coding.algesthesiahunter.top/VueLazyView)
-- [Online site](<https://algesthesiahunter.github.io/VueLazyView>)
+- [在线网址](https://coding.algesthesiahunter.top/VueOperating)
+- [Online site](<https://algesthesiahunter.github.io/VueOperating>)
 ### NPM
 
 ``` bash
 # use npm
-npm i vue2-lazy-view -S
+npm i vue-operating -S
 
 # use yarn
-yarn add vue2-lazy-view
+yarn add vue-operating
 ```
 
 ### Import Plugins
 
 ``` js
-import VueLazyView from 'vue2-lazy-view'
-Vue.use(VueLazyView)
+import VueOperating from 'vue-operating'
+Vue.use(VueOperating)
 
 ```
